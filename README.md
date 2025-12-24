@@ -49,21 +49,32 @@ PAGINATION_LIMIT=12
 
 ## Running the Application
 
-### With Docker (Recommended)
+### With Docker (Recommended - Includes MongoDB)
+
+This setup includes both FastAPI backend and MongoDB in Docker containers.
 
 ```bash
-# Build and run with docker-compose
-docker-compose up
-
-# Or build and run in detached mode
+# Build and run both FastAPI and MongoDB
 docker-compose up -d
 
-# Stop the container
+# View logs
+docker-compose logs -f
+
+# Seed the database with sample data
+docker exec tweeky-queeky-fastapi python seeder.py
+
+# Stop all containers
 docker-compose down
 
-# Rebuild after code changes
-docker-compose up --build
+# Stop and remove volumes (will delete all data)
+docker-compose down -v
 ```
+
+**MongoDB Access:**
+- **Host:** localhost:27017
+- **Username:** admin
+- **Password:** adminpassword
+- **Database:** tweeky
 
 ### Without Docker
 
